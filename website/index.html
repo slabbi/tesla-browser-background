@@ -1,0 +1,71 @@
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Hintergrundbild ändern</title>
+    <style>
+        body {
+            transition: background-image 0.5s ease-in-out;
+			background-repeat: no-repeat;
+			background-size: cover; 	
+			background-position: center;   
+			width: 100vw;
+			height: 100vh;
+			background-image: url('pic1.jpg'); 
+        }
+    </style>
+	<script>
+		var cnt = 1;
+		var max = 3;
+		var old = 1;
+	</script>
+</head>
+<body>
+	<button id="b0" style="vertical-align: text-top;" type="button" value="url('none')">Wechsel</button>
+	<script>
+		let t;
+		document.getElementById("b0").addEventListener("click", myFunctionT);
+		for (let i = 1; i <= max; i++) {
+			let s = '<button id="b' + i + '" style="vertical-align: text-top;" type="button" value="' + i + '">Bild ' + i + '</button>';
+			document.write(s + " ");
+			document.getElementById("b" + i).addEventListener("click", myFunction);
+		}
+		function myFunction() {
+			clearTimeout(t);
+			old = cnt;
+			cnt = Number(this.value);
+			let file = "pic" + cnt + ".jpg";
+            document.body.style.backgroundImage = 'url(' + file + ')';
+			document.getElementById("content").innerHTML = "Bild " + cnt;
+			if (old>0) invert(old);
+			invert(cnt);
+		};
+		function myFunctionT() {
+			clearTimeout(t);
+			old = cnt;
+			cnt = cnt + 1;
+			if (cnt>max) cnt = 1;
+			let file = "pic" + cnt + ".jpg";
+            document.body.style.backgroundImage = 'url(' + file + ')';
+			document.getElementById("content").innerHTML = "Bild " + cnt;
+			t = setTimeout( myFunctionT, 5*60*1000);
+			if (old>0) invert(old);
+			invert(cnt);
+		};
+		function invert( i ) {
+			let button = document.getElementById("b" + i);
+			let cBackgroundColor = window.getComputedStyle(button).backgroundColor;
+			let cTextColor       = window.getComputedStyle(button).color;
+			button.style.backgroundColor = cTextColor;
+			button.style.color           = cBackgroundColor;
+		}
+
+		var button = document.getElementById("b0");
+		button.style.width = "5em";
+		button.style.height = "5em";
+		invert(cnt);
+    </script>
+	<!-- div id="content" style="position: fixed; text-align: center; bottom: 0px; width: 100%"></div -->
+	<div id="content" style="position: fixed; text-align: right; right: 8px; top: 0px; width: 100%"></div>
+</body>
+</html>
