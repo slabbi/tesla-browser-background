@@ -1,6 +1,6 @@
 # Tesla Webbrowser Gallery
 
-The Tesla Entertainment System does not offer the option of setting your own background or displaying an image while driving.
+The Tesla Entertainment System does not offer the option of setting your own background or displaying an image.
 
 If you have your own web space, you can display a small image gallery via the web browser using this script.
 
