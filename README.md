@@ -2,9 +2,9 @@
 
 The Tesla Entertainment System does not offer the option of setting your own background or displaying an image.
 
-<img src="/_pictures/tesla_browser.jpg" width="400">
-
 If you have your own web space, you can display a small image gallery via the web browser using this script.
+
+<img src="/_pictures/tesla_browser.jpg" width="400">
 
 In the ``index.html`` file, the ``max`` parameter determines how many images are available. The images are stored in the same directory under the name ``picX.jpg`` (x=1...max).
 
